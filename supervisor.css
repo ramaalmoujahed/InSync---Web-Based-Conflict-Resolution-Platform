@@ -1,0 +1,1305 @@
+/* General Styling */
+body {
+    font-family: "Quicksand", sans-serif;
+    background-color: #f0f2f5;
+    color: #333;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* Sidebar Styling */
+.sidebar-custom {
+    width: 260px;
+    background:  #597ea4;
+    color: #fff;
+    padding: 40px 25px;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+    box-shadow: 2px 0 8px rgba(0, 0, 0, 0.2);
+    transition: width 0.3s ease;
+}
+
+.sidebar-custom h2 {
+    font-size: 26px;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 35px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+}
+
+.sidebar-custom a {
+    color: #c1c9d3;
+    text-decoration: none;
+    display: block;
+    padding: 14px 18px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    transition: background 0.3s, color 0.3s;
+}
+
+.sidebar-custom a:hover, .sidebar-custom a.active {
+    background-color: #1f2d40;
+    color: #fff;
+}
+
+/* Avatar Section */
+.avatar-container-custom {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.user-avatar-custom {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin: 0 auto 10px;
+}
+
+.status-custom {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #28a745;
+    border: 2px solid #fff;
+}
+
+/* Main Content Styling */
+.main-content-custom {
+    margin-left: 260px;
+    padding: 35px;
+    background-color: #fff;
+    flex: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    transition: margin-left 0.3s ease;
+}
+
+/* Dashboard Layout */
+.dashboard-layout-custom {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Header Styling */
+.header-custom {
+    display: flex;
+    align-items: center;
+    background: #597ea4;
+    color: #fff;
+    padding: 10px 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    border: 2px solid #4a5b75; /* Add this line for border */
+    margin-left: 20px;
+}
+
+
+.header-custom h1 {
+    margin: 0;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+}
+
+.notification-btn-custom {
+    background-color: #fff;
+    color: #5b0808;
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 20px;
+    margin-left: auto;
+    transition: background 0.3s;
+}
+
+.notification-btn-custom:hover {
+    background-color: #e55757;
+}
+
+/* Tab Content Styling */
+.tab-content-custom {
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(46, 26, 26, 0.1);
+    display: none;
+}
+
+.tab-content-custom.active {
+    display: block;
+}
+
+/* Profile Section */
+.profile-section, .settings-section, .contact-section {
+    margin-top: 20px;
+}
+
+.profile-section label,
+.settings-section label,
+.contact-section label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+.profile-section input,
+.settings-section input,
+.settings-section select,
+.contact-section input,
+.contact-section textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.settings-save-btn-custom,
+.contact-submit-btn {
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background 0.3s;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.settings-save-btn-custom:hover,
+.contact-submit-btn:hover {
+    background-color: #3b82f6;
+}
+
+/* Report Tabs Styling */
+.report-tabs-custom {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.report-tab-button-custom {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ddd;
+    background-color: #f9f9f9;
+    cursor: pointer;
+    font-size: 14px;
+    color: #333;
+    border-radius: 5px 5px 0 0;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.report-tab-button-custom.active {
+    background-color: #1e3a8a;
+    color: #fff;
+    font-weight: bold;
+}
+
+.report-tab-button-custom:hover {
+    background-color: #e2e6ea;
+}
+
+.report-tab-content-custom {
+    display: none;
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 0 0 10px 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+}
+
+.report-tab-content-custom.active {
+    display: block;
+}
+
+/* Table Styling */
+/* Container should stretch to fit content without scrollbars */
+.table-container-custom {
+    max-width: 100%;  /* Ensure the container takes full width */
+    margin: 0 auto;   /* Center the table container */
+    overflow: visible;  /* Prevent any hidden overflow */
+}
+
+/* Report Tables should take full width */
+.custom-report-table,
+.custom-pending-table {
+    width: 100%; /* Ensure the table fits the container */
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Add shadow for better visibility */
+}
+
+/* General styling for table cells */
+.custom-report-table th,
+.custom-report-table td,
+.custom-pending-table th,
+.custom-pending-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    font-size: 14px;
+}
+
+/* Background color for header cells */
+.custom-report-table th,
+.custom-pending-table th {
+    background-color: #f4f4f4;
+    font-weight: 600;
+}
+
+/* Hover effect for rows */
+.custom-report-table tr:hover td,
+.custom-pending-table tr:hover td {
+    background-color: #f2f4f6;
+    cursor: pointer;
+}
+
+/* Modal Styling */
+.modal-custom {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-custom {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 40%;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.close-btn-custom {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close-btn-custom:hover,
+.close-btn-custom:focus {
+    color: #000;
+    text-decoration: none;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .sidebar-custom {
+        width: 220px;
+        padding: 20px 15px;
+    }
+
+    .main-content-custom {
+        margin-left: 240px;
+        padding: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .sidebar-custom {
+        width: 200px;
+        padding: 15px 10px;
+    }
+
+    .main-content-custom {
+        margin-left: 220px;
+        padding: 15px;
+    }
+}
+
+/* Calendar Styling */
+.calendar-container-custom {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    background: #fff;
+    max-width: 800px;
+}
+
+.calendar-header-custom {
+    text-align: center;
+    padding: 10px 0;
+    background: linear-gradient(to bottom, rgb(250, 251, 253) 0%, rgba(255, 255, 255, 0) 100%);
+    border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+}
+
+.calendar-header-custom h1 {
+    margin: 0;
+    font-size: 14px;
+}
+
+.calendar-header-custom p {
+    margin: 2px 0 0 0;
+    font-size: 11px;
+    font-weight: 600;
+    color: rgba(81, 86, 93, 0.4);
+}
+
+.calendar-custom {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(7, minmax(60px, 1fr));
+    grid-template-rows: 30px;
+    grid-auto-rows: 60px;
+    overflow: auto;
+}
+
+.day-name-custom {
+    font-size: 10px;
+    text-transform: uppercase;
+    color: #99a1a7;
+    text-align: center;
+    border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+    line-height: 30px;
+    font-weight: 500;
+}
+
+.day-custom {
+    border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+    border-right: 1px solid rgba(166, 168, 179, 0.12);
+    text-align: right;
+    padding: 8px 10px;
+    letter-spacing: 0.5px;
+    font-size: 10px;
+    color: #98a0a6;
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.day-custom.day-disabled-custom {
+    color: rgba(152, 160, 166, 0.6);
+    background-color: #fff;
+    cursor: not-allowed;
+}
+
+.task-custom {
+    border-left-width: 2px;
+    padding: 5px 8px;
+    margin: 5px;
+    border-left-style: solid;
+    font-size: 12px;
+    position: relative;
+}
+
+.task-warning-custom {
+    border-left-color: #fdb44d;
+    background: #fef0db;
+    color: #b57939;
+}
+
+.task-danger-custom {
+    border-left-color: #fa607e;
+    background: rgba(253, 197, 208, 0.7);
+    color: #ad3948;
+}
+
+.task-info-custom {
+    border-left-color: #4786ff;
+    background: rgba(218, 231, 255, 0.7);
+    color: #1c5dca;
+}
+
+/* Upload Documents Section */
+.upload-documents-section-custom {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.upload-input-custom {
+    margin: 5px 0;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.upload-btn-custom {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-btn-custom:hover {
+    background-color: #0056b3;
+}
+
+/* Received Documents Table Styling */
+.received-documents-section-custom {
+    margin-top: 30px;
+}
+
+.received-documents-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.received-documents-table-custom th,
+.received-documents-table-custom td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.received-documents-table-custom th {
+    background-color: #f2f2f2;
+}
+
+.received-documents-table-custom button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.received-documents-table-custom button:hover {
+    background-color: #0056b3;
+}
+
+/* Dashboard Layout Update */
+/* Dashboard Layout */
+.dashboard-layout-custom {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+    gap: 20px;
+    width: 100%;
+    margin-top: 20px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+/* Key Metrics Section */
+.key-metrics-section-custom,
+.survey-card-section-custom {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%; /* Full width in grid */
+    margin-bottom: 20px;
+}
+
+
+/* Recent Activities Section */
+.recent-activities-section-custom {
+    margin-bottom: 30px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+}
+
+.activity-list-custom {
+    list-style-type: none;
+    padding: 0;
+}
+
+.activity-list-custom li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Notifications Section */
+.notifications-section-custom {
+    margin-bottom: 30px;
+}
+
+.notifications-list-custom {
+    list-style: none;
+    padding: 0;
+}
+
+.notifications-list-custom li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+  .calendar-custom {
+    display: grid;
+    width: 100%;
+    grid-template-columns: repeat(7, minmax(60px, 1fr)); /* Reduced column width */
+    grid-template-rows: 30px; /* Reduced row height */
+    grid-auto-rows: 60px; /* Reduced row height */
+    overflow: auto;
+  }
+  .day-name-custom {
+    font-size: 10px; /* Smaller font size */
+    text-transform: uppercase;
+    color: #99a1a7;
+    text-align: center;
+    border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+    line-height: 30px; /* Reduced line height */
+    font-weight: 500;
+  }
+  
+  .day-custom {
+    border-bottom: 1px solid rgba(166, 168, 179, 0.12);
+    border-right: 1px solid rgba(166, 168, 179, 0.12);
+    text-align: right;
+    padding: 8px 10px; /* Reduced padding */
+    letter-spacing: 0.5px; /* Reduced spacing */
+    font-size: 10px; /* Smaller font size */
+    box-sizing: border-box;
+    color: #98a0a6;
+    position: relative;
+    pointer-events: none;
+    z-index: 1;
+  }
+  
+  .day-custom.day-disabled-custom {
+    color: rgba(152, 160, 166, 0.6);
+    background-color: #ffffff;
+    cursor: not-allowed;
+  }
+  
+  .task-custom {
+    border-left-width: 2px; /* Reduced border width */
+    padding: 5px 8px; /* Reduced padding */
+    margin: 5px; /* Reduced margin */
+    border-left-style: solid;
+    font-size: 12px; /* Smaller font size */
+    position: relative;
+  }
+  
+  .task-warning-custom {
+    border-left-color: #fdb44d;
+    background: #fef0db;
+    color: #b57939;
+  }
+  
+  .task-danger-custom {
+    border-left-color: #fa607e;
+    background: rgba(253, 197, 208, 0.7);
+    color: #ad3948;
+  }
+  
+  .task-info-custom {
+    border-left-color: #4786ff;
+    background: rgba(218, 231, 255, 0.7);
+    color: #1c5dca;
+  }
+  
+  .task-primary-custom {
+    background: #4786ff;
+    color: #fff;
+    box-shadow: 0 10px 14px rgba(71, 134, 255, 0.4);
+  }
+  
+  .task-detail-custom {
+    position: absolute;
+    left: 0;
+    top: calc(100% + 10px);
+    background: #fff;
+    border: 1px solid rgba(166, 168, 179, 0.2);
+    color: #000;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 4px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+    z-index: 2;
+  }
+  /* Upload Documents Section Styling */
+.upload-documents-section-custom {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.upload-input-custom {
+    margin: 5px 0;
+    padding: 10px;
+    width: calc(100% - 22px);
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.upload-btn-custom {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.upload-btn-custom:hover {
+    background-color: #0056b3;
+}
+
+/* Received Documents Table Styling */
+.received-documents-section-custom {
+    margin-top: 30px;
+}
+
+.received-documents-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.received-documents-table-custom th,
+.received-documents-table-custom td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.received-documents-table-custom th {
+    background-color: #f2f2f2;
+}
+
+.received-documents-table-custom button {
+    padding: 5px 10px;
+    margin-right: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.received-documents-table-custom button:hover {
+    background-color: #0056b3;
+}
+
+.dashboard-title-custom {
+    font-size: 24px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+
+
+.main-content-custom {
+    margin-left: 260px;
+    padding: 35px;
+    background-color: #ffffff;
+    flex: 1;
+    overflow-y: auto;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.05);
+    display: flex;
+}
+
+
+
+
+/* Announcements Section */
+.announcements-section-custom {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 48%;
+    display: inline-block;
+    vertical-align: top;
+    margin-bottom: 20px;
+}
+
+
+.activity-list-custom {
+    list-style-type: none;
+    padding: 0;
+    max-height: none;
+}
+
+.activity-list-custom li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+    position: relative;
+}
+
+/* Performance Insights Section */
+.performance-insights-section-custom {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    width: 100%;
+    max-width: 600px;
+    padding: 10px;
+}
+
+.insights-container-custom {
+    display: flex;
+    gap: 10px;
+}
+
+.insight-card-custom {
+    flex: 1;
+    padding: 10px;
+    background-color: #f0f4f8;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: 100%;
+    max-width: 250px;
+    font-size: 12px;
+}
+
+
+
+/* Survey Card Button */
+.survey-card-btn-custom {
+    padding: 8px 12px;
+    background-color: #1e3a8a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-right: 5px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.survey-card-btn-custom:hover {
+    background-color: #3b82f6;
+}
+
+/* Update Data Section */
+.update-data-section-custom {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+}
+
+/* Form Elements */
+.form-group-custom {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group-custom label {
+    font-size: 14px;
+    color: #333;
+    font-weight: 500;
+    margin-bottom: 5px;
+}
+
+.form-input-custom {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+    background-color: #ffffff;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input-custom:focus {
+    border-color: #1e3a8a;
+    background-color: #f0f7ff;
+    outline: none;
+}
+
+/* Submit Button */
+.submit-btn-custom {
+    width: 100%;
+    padding: 12px;
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.submit-btn-custom:hover {
+    background-color: #3b82f6;
+    transform: translateY(-2px);
+}
+
+.submit-btn-custom:active {
+    background-color: #1a6ed8;
+    transform: translateY(0);
+}
+
+/* Notifications Section */
+.notifications-section-custom {
+    margin-bottom: 30px;
+}
+
+.notifications-list-custom {
+    list-style: none;
+    padding: 0;
+}
+
+.notifications-list-custom li {
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    color: #555;
+}
+
+/* Upcoming Deadlines Section */
+
+/* Deadlines Table */
+.deadlines-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.deadlines-table-custom th, 
+.deadlines-table-custom td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.deadlines-table-custom th {
+    background-color: #f2f2f2;
+}
+
+/* Activity Action Buttons */
+.action-btn-custom {
+    padding: 5px 10px;
+    background-color: #1e3a8a;
+    color: #ffffff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background-color 0.3s;
+    margin-right: 5px;
+}
+
+.action-btn-custom:hover {
+    background-color: #3b82f6;
+}
+
+/* Notification Dropdown */
+.notification-dropdown-custom {
+    display: none;
+    position: absolute;
+    top: 60px;
+    right: 30px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+}
+
+.notifications-list-custom li:last-child {
+    border-bottom: none;
+}
+
+/* Company Icon */
+.company-icon {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+}
+/* Conflict Trend by Department Section */
+.conflict-trend-section-custom {
+    width: 40%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.conflict-trend-header-custom {
+    font-size: 18px;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.chart-container-custom {
+    position: relative;
+    height: 300px;
+    width: 100%;
+}
+
+/* Chart legend and tooltip styling */
+.chart-legend-custom {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.chart-legend-item {
+    display: inline-block;
+    margin-right: 15px;
+    font-size: 12px;
+    color: #333;
+}
+
+.chart-legend-color {
+    width: 10px;
+    height: 10px;
+    display: inline-block;
+    margin-right: 5px;
+}
+/* Department Performance Section */
+.department-performance-section-custom {
+    width: 40%;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: block;
+}
+
+.department-performance-header-custom {
+    font-size: 18px;
+    color: #1e3a8a;
+    font-weight: bold;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+.chart-container-custom {
+    position: relative;
+    height: 300px;
+    width: 100%;
+    margin-top: 10px;
+}
+.summary-table-section-custom {
+    margin-top: 20px;
+}
+
+.summary-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.summary-table-custom th,
+.summary-table-custom td {
+    border: 1px solid #060c3f7f;
+    padding: 10px;
+    text-align: left;
+    font-size: 14px;
+}
+
+.summary-table-custom th {
+    background-color: #a2bcca;
+    font-weight: 600;
+}
+
+.summary-table-custom tbody tr:hover td {
+    background-color: #f2f4f6;
+    cursor: pointer;
+}
+/* Sidebar active tab background color white, text color white */
+.sidebar-custom a.active {
+    background-color: #ffffff; /* Background color white */
+    color: #597ea4;            /* Text color in sidebar links */
+}
+
+.sidebar-custom a {
+    color: #c1c9d3; /* Default color for non-active links */
+}
+
+.sidebar-custom a:hover {
+    background-color: #1f2d40;
+    color: #ffffff;
+}
+/* Flexbox container for the charts */
+.horizontal-charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 20px; /* Add some space between each chart */
+    margin-top: 20px;
+}
+
+.department-performance-section-custom,
+.conflict-trend-section-custom,
+.performance-insights-section-custom {
+    flex: 1; /* Equal width for all charts */
+    min-width: 300px; /* Minimum width to ensure responsive layout */
+}
+
+.chart-container-custom {
+    position: relative;
+    width: 90%;
+    height: 300px; /* Fixed height for the charts */
+}
+/* Upcoming Deadlines Table Styling */
+.upcoming-deadlines-section-custom {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    width: 100%; /* Adjust the width to make it smaller */
+    margin-bottom: 20px; /* Space below the section */
+}
+
+/* Upcoming Deadlines Table: Match the Summary Table Colors */
+.deadlines-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    font-size: 14px; /* Make the table smaller */
+}
+
+/* Table Headers: Match the summary table */
+.deadlines-table-custom th {
+    background-color: #a2bcca;
+    color: #333;
+    font-weight: 600;
+    padding: 8px; /* Reduce padding */
+}
+
+/* Table Rows: Border and hover effect matching summary table */
+.deadlines-table-custom td {
+    border: 1px solid #060c3f7f;
+    padding: 8px; /* Reduced padding */
+    font-size: 13px; /* Reduced font size */
+    text-align: left;
+}
+
+/* Hover effect for table rows */
+.deadlines-table-custom tbody tr:hover td {
+    background-color: #f2f4f6;
+    cursor: pointer;
+}
+/* Schedule Table Section */
+.schedual-table-custom {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Subtle shadow */
+}
+
+/* Table headers styled similarly to other tables */
+.schedual-table-custom th {
+    background-color: #a2bcca; /* Match the summary table's header color */
+    font-weight: 600;
+    color: #333;
+    padding: 10px;
+    text-align: left;
+}
+
+/* Table cells for regular content */
+.schedual-table-custom td {
+    border: 1px solid #060c3f7f; /* Same border style as other tables */
+    padding: 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+/* Hover effect for table rows */
+.schedual-table-custom tbody tr:hover td {
+    background-color: #f2f4f6; /* Same hover effect */
+    cursor: pointer;
+}
+
+/* Responsive Design for Schedule Table */
+@media (max-width: 768px) {
+    .schedual-table-custom {
+        font-size: 12px; /* Adjust font size for smaller screens */
+    }
+}
+
+/* Profile Section Styling */
+.profile-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Profile Container */
+.profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Profile Picture Section */
+.profile-picture {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #2b3574;
+}
+
+.profile-edit-btn {
+    margin-top: 10px;
+    padding: 8px 15px;
+    background-color: #2b3574;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.profile-edit-btn:hover {
+    background-color: #2b3574;
+}
+
+/* Profile Details */
+.profile-details {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Profile Section Titles */
+.profile-section-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 10px;
+    border-bottom: 2px solid #4CAF50;
+    padding-bottom: 5px;
+}
+
+/* Profile Input Fields */
+.profile-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-group label {
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #555;
+}
+
+.profile-group input {
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.profile-group input:focus {
+    border-color: #1e3dec;
+}
+
+/* Save Button */
+.profile-save-btn {
+    padding: 10px 15px;
+    background-color: #140ec6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.profile-save-btn:hover {
+    background-color: #134fd1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        max-width: 90%;
+    }
+
+    .profile-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-save-btn {
+        font-size: 14px;
+    }
+}

@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="employee.css">
+
+    
+</head>
+
+<body>
+    <header class="header-custom">
+        <div class="header-content">
+          
+            <img src="images\logo.png" alt="Company Logo" class="company-logo"> 
+            <button class="notification-btn-custom">
+                🔔
+            </button>
+        </div>
+    </header>
+    
+    <div class="sidebar">
+        <h2>Ali Khaled</h2>
+        <div class="avatar-container-custom">
+            <div class="avatar-custom">
+                <img src="images\employee1.jpg" alt="User Avatar" class="user-avatar-custom">
+                <span class="status-custom active"></span>
+            </div>
+        </div>
+        <a href="#dashboard" class="tab-link active" onclick="showTab(event, 'dashboard')">Dashboard</a>
+        <a href="#reports" class="tab-link" onclick="showTab(event, 'reports')">Reports</a>
+        <a href="#schedual" class="tab-link" onclick="showTab(event, 'schedual')">Schedule</a>
+        <a href="#profile" class="tab-link" onclick="showTab(event, 'profile')">Profile</a>
+        <a href="#settings" class="tab-link" onclick="showTab(event, 'settings')">Settings</a>
+        <a href="#contact" class="tab-link" onclick="showTab(event, 'contact')">Contact Us</a>
+    </div>
+
+ 
+    <div class="main-content">
+     
+        <div class="tab-content active" id="dashboard">
+            <h3 class="dashboard-title">Dashboard</h3>
+            <div class="dashboard-overview">
+                <div class="conflict-reports-overview">
+                    <h4>Conflict Reports Overview</h4>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Month</th>
+                                <th>Total Conflicts</th>
+                                <th>Resolved</th>
+                                <th>Pending</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>September</td>
+                                <td>30</td>
+                                <td>12</td>
+                                <td>18</td>
+                            </tr>
+                            <tr>
+                                <td>August</td>
+                                <td>25</td>
+                                <td>15</td>
+                                <td>10</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="chart-container">
+                    <h4>Conflict Trends by Department</h4>
+                    <canvas id="conflictTrendsChart"></canvas>
+                </div>
+                <!-- Pending Resolutions (Table) -->
+                <div class="dashboard-widget">
+                    <h4>Pending Resolutions</h4>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Conflict Type</th>
+                                <th>Departments Involved</th>
+                                <th>Status</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Rush Order Challenges</td>
+                                <td>Marketing, Production</td>
+                                <td>Pending Review</td>
+                            </tr>
+                            <tr>
+                                <td>Budget Shortfalls</td>
+                                <td>Finance, All Departments</td>
+                                <td>Awaiting Finance Response</td>
+                            </tr>
+                            <tr>
+                                <td>IT System Downtime</td>
+                                <td>IT, All Departments</td>
+                                <td>Resolution in Progress</td>
+                            </tr>
+                            <tr>
+                                <td>Maintenance Scheduling Conflicts</td>
+                                <td>Maintenance, Production</td>
+                                <td>Pending Approval</td>
+                            </tr>
+                            <tr>
+                                <td>Quality Control Delays</td>
+                                <td>Quality, Production</td>
+                                <td>Delayed</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="chart-container">
+                    <h4>Department Performance</h4>
+                    <canvas id="departmentPerformanceChart"></canvas>
+                </div>
+                <!-- Notifications and Alerts (Table) -->
+                <div class="dashboard-widget">
+                    <h4>Notifications & Alerts</h4>
+                    <table class="dashboard-table">
+                        <thead>
+                            <tr>
+                                <th>Alert Type</th>
+                                <th>Details</th>
+                                <th>Action Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Urgent</td>
+                                <td>Budget conflict between Finance and Marketing unresolved for 10 days.</td>
+                                <td>Review Budget Allocation</td>
+                            </tr>
+                            <tr>
+                                <td>Notice</td>
+                                <td>Timeline adjustment conflict has been resolved.</td>
+                                <td>Confirm Resolution</td>
+                            </tr>
+                            <tr>
+                                <td>Warning</td>
+                                <td>Production and Packaging misalignment causing delays.</td>
+                                <td>Coordinate with Production</td>
+                            </tr>
+                            <tr>
+                                <td>Alert</td>
+                                <td>Overlapping project timelines affecting resource allocation.</td>
+                                <td>Adjust Schedules</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="tab-content" id="reports">
+            <h3 class="reports-title">Reports</h3>
+            <div class="reports-tabs">
+                <div class="reports-tab" onclick="showReportTab(event, 'report-form')">Report</div>
+                <div class="reports-tab" onclick="showReportTab(event, 'report-history')">History</div>
+            </div>
+
+            <div class="report-tab-content" id="report-form">
+                <h4 class="profile-section-title">Generate a New Report</h4>
+                <form>
+                    <div class="form-group">
+                        <label for="report-type">Department Involved</label>
+                        <select id="report-type" required>
+                            <option value="marketing">Marketing</option>
+                            <option value="finance">Finance</option>
+                            <option value="hr">Human Resources</option>
+                            <option value="sales">Sales</option>
+                            <!-- More options... -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority-level">Priority Level</label>
+                        <select id="priority-level" required>
+                            <option value="high">High</option>
+                            <option value="medium">Medium</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="conflict-type">Conflict Type</label>
+                        <textarea id="conflict-type" rows="3" placeholder="Conflict type..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description</label>
+                        <textarea id="description" rows="3" placeholder="Detailed description..."></textarea>
+                    </div>
+                    <button class="report-submit-btn">Generate Report</button>
+                </form>
+            </div>
+
+            <div class="report-tab-content" id="report-history" style="display: none;">
+                <h4 class="profile-section-title">Report History</h4>
+                <table class="report-history-table">
+                    <thead>
+                        <tr>
+                            <th>Report ID</th>
+                            <th>Conflict Type</th>
+                            <th>Date Generated</th>
+                            <th>Date Closed</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>RPT-001</td>
+                            <td>Performance Report</td>
+                            <td>2024-09-01</td>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>RPT-002</td>
+                            <td>Attendance Report</td>
+                            <td>2024-08-25</td>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                        <tr>
+                            <td>RPT-003</td>
+                            <td>Financial Report</td>
+                            <td>2024-08-18</td>
+                            <td><a href="#">Download</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+
+        <div class="tab-content" id="schedual">
+            <h3 class="schedual-title-custom">Schedule</h3>
+            <div class="schedual-table-container-custom">
+                <table class="schedual-table-custom" id="schedualTable">
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Meeting Title</th>
+                            <th>Participant(s)</th>
+                            <th>Role</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="schedual-employees">
+                            <td>9:00 AM</td>
+                            <td>Project Kickoff</td>
+                            <td>John Doe, Jane Smith</td>
+                            <td>Employee</td>
+                            <td>Conference Room A</td>
+                            <td>Scheduled</td>
+                            <td><button class="action-btn-custom">Reschedule</button></td>
+                        </tr>
+                        <tr class="schedual-supervisors">
+                            <td>10:30 AM</td>
+                            <td>Team Review</td>
+                            <td>Michael Brown</td>
+                            <td>Employee</td>
+                            <td>Meeting Room 2</td>
+                            <td>In Progress</td>
+                            <td>.....</td>
+                        </tr>
+                        <tr class="schedual-manager">
+                            <td>1:00 PM</td>
+                            <td>Outcome Report</td>
+                            <td>Sarah Williams</td>
+                            <td>Manager</td>
+                            <td>Executive Office</td>
+                            <td>Pending</td>
+                            <td>.....</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="calendar-container-custom">
+                <div class="calendar-header-custom">
+                    <h1>November</h1>
+                    <button>▾</button>
+                    <p>2023</p>
+                </div>
+                <div class="calendar-custom">
+                    <span class="day-name-custom">Mon</span>
+                    <span class="day-name-custom">Tue</span>
+                    <span class="day-name-custom">Wed</span>
+                    <span class="day-name-custom">Thu</span>
+                    <span class="day-name-custom">Fri</span>
+                    <span class="day-name-custom">Sat</span>
+                    <span class="day-name-custom">Sun</span>
+
+                    <div class="day-custom day-disabled-custom">30</div>
+                    <div class="day-custom day-disabled-custom">31</div>
+                    <div class="day-custom">1</div>
+                    <div class="day-custom">2</div>
+                    <div class="day-custom">3</div>
+                    <div class="day-custom">4</div>
+                    <div class="day-custom">5</div>
+                    <div class="day-custom">6</div>
+                    <div class="day-custom">7</div>
+                    <div class="day-custom">8</div>
+                    <div class="day-custom">9</div>
+                    <div class="day-custom">10</div>
+                    <div class="day-custom">11</div>
+                    <div class="day-custom">12</div>
+                    <div class="day-custom">13</div>
+                    <div class="day-custom">14</div>
+                    <div class="day-custom">15</div>
+                    <div class="day-custom">16</div>
+                    <div class="day-custom">17</div>
+                    <div class="day-custom">18</div>
+                    <div class="day-custom">19</div>
+                    <div class="day-custom">20</div>
+                    <div class="day-custom">21</div>
+                    <div class="day-custom">22</div>
+                    <div class="day-custom">23</div>
+                    <div class="day-custom">24</div>
+                    <div class="day-custom">25</div>
+                    <div class="day-custom">26</div>
+                    <div class="day-custom">27</div>
+                    <div class="day-custom">28</div>
+                    <div class="day-custom">29</div>
+                    <div class="day-custom">30</div>
+                    <div class="day-custom">1</div>
+                    <div class="day-custom">2</div>
+
+                    <section class="task-custom task-warning-custom">Meeting R103</section>
+                    <section class="task-custom task-danger-custom">Meeting R107</section>
+                    <section class="task-custom task-primary-custom">OFF-WORK</section>
+                    <section class="task-custom task-info-custom">Meeting R108</section>
+                </div>
+            </div>
+        </div>
+        <div class="tab-content" id="profile">
+            <h3 class="profile-title">Your Profile</h3>
+            <div class="profile-container">
+                <div class="profile-picture">
+                    <img src="images\employee1.jpg" alt="Profile Picture" class="profile-img">
+                    <button class="profile-edit-btn">Change Photo</button>
+                </div>
+                <div class="profile-details">
+                    <h4 class="profile-section-title">Personal Information</h4>
+                    <div class="form-group profile-group">
+                        <label for="profile-name">user name</label>
+                        <input type="text" id="profile-name" placeholder="Enter your full name" value="ali_khaled">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="profile-id">Employee ID</label>
+                        <input type="text" id="profile-id" placeholder="Enter your employee ID" value="E1212">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="profile-role">Role</label>
+                        <input type="text" id="profile-role" placeholder="Enter your role" value="Employee">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="profile-phone">Phone Number</label>
+                        <input type="tel" id="profile-phone" placeholder="Enter your phone number" value="+1 (555) 123-4567">
+                    </div>
+
+                    <h4 class="profile-section-title">Company Information</h4>
+                    <div class="form-group profile-group">
+                        <label for="company-domain">Company Domain</label>
+                        <input type="text" id="company-domain" placeholder="Enter company domain" value="company.com">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="company-address">Company Address</label>
+                        <input type="text" id="company-address" placeholder="Enter company address" value="1234 Elm Street, New York, NY">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="company-zip">Zip Code</label>
+                        <input type="text" id="company-zip" placeholder="Enter company zip code" value="10001">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="company-url">Company Website URL</label>
+                        <input type="url" id="company-url" placeholder="Enter company website URL" value="https://www.company.com">
+                    </div>
+                    <div class="form-group profile-group">
+                        <label for="company-industry">Industry</label>
+                        <input type="text" id="company-industry" placeholder="Enter company industry" value="Manufacturing">
+                    </div>
+                    <button class="profile-save-btn">Save Changes</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Settings Content -->
+        <div class="tab-content" id="settings">
+            <h3 class="settings-title">Settings</h3>
+            <div class="settings-container">
+                <h4 class="settings-section-title">Account Management</h4>
+                <div class="form-group settings-group">
+                    <label for="settings-username">Username</label>
+                    <input type="text" id="settings-username" placeholder="Enter your username" value="ali_khaled">
+                </div>
+                <div class="form-group settings-group">
+                    <label for="settings-email">Email Address</label>
+                    <input type="email" id="settings-email" placeholder="Enter your email" value="ali.khaled@company.com">
+                </div>
+                <div class="form-group settings-group">
+                    <label for="settings-language">Preferred Language</label>
+                    <select id="settings-language">
+                        <option value="en">English</option>
+                        <option value="es">Spanish</option>
+                        <option value="fr">French</option>
+                        <option value="de">German</option>
+                    </select>
+                </div>
+                <button class="settings-save-btn">Update Account</button>
+
+                <h4 class="settings-section-title">Security Settings</h4>
+                <div class="form-group settings-group">
+                    <label for="settings-password">Change Password</label>
+                    <input type="password" id="settings-password" placeholder="Enter new password">
+                </div>
+                <div class="form-group settings-group">
+                    <label for="settings-confirm-password">Confirm Password</label>
+                    <input type="password" id="settings-confirm-password" placeholder="Confirm new password">
+                </div>
+                <div class="form-group settings-group">
+                    <label for="settings-2fa">Two-Factor Authentication</label>
+                    <select id="settings-2fa">
+                        <option value="enabled">Enabled</option>
+                        <option value="disabled">Disabled</option>
+                    </select>
+                </div>
+                <button class="settings-save-btn">Update Security</button>
+
+                <h4 class="settings-section-title">Notification Preferences</h4>
+                <div class="form-group settings-group">
+                    <label for="settings-email-notifications">Email Notifications</label>
+                    <select id="settings-email-notifications">
+                        <option value="all">All Notifications</option>
+                        <option value="important">Only Important</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+                <div class="form-group settings-group">
+                    <label for="settings-sms-notifications">SMS Notifications</label>
+                    <select id="settings-sms-notifications">
+                        <option value="all">All Notifications</option>
+                        <option value="important">Only Important</option>
+                        <option value="none">None</option>
+                    </select>
+                </div>
+                <button class="settings-save-btn">Update Notifications</button>
+
+                <h4 class="settings-section-title">Data Management</h4>
+                <div class="form-group settings-group">
+                    <label for="settings-data-export">Export Your Data</label>
+                    <button class="settings-export-btn">Download Data</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contact Us Content -->
+        <div class="tab-content" id="contact">
+            <div class="contact-us-container">
+                <div class="contact-us-card">
+                    <h3>Contact Us</h3>
+                    <div class="form-group">
+                        <label for="contact-name">Name</label>
+                        <input type="text" id="contact-name" placeholder="Write your name here..">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-email">Email</label>
+                        <input type="email" id="contact-email" placeholder="Let us know how to contact you back..">
+                    </div>
+                    <div class="form-group">
+                        <label for="contact-message">Message</label>
+                        <textarea id="contact-message" rows="4" placeholder="What would you like to tell us.."></textarea>
+                    </div>
+                    <button type="submit">Send Message</button>
+                    <div class="contact-details">
+                        <span>Phone: 001 1023 567</span>
+                        <span>Email: contact@company.com</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        
+        // JavaScript for tab functionality
+        function showTab(event, tabId) {
+            event.preventDefault();
+            // Hide all tabs
+            document.querySelectorAll('.tab-content').forEach(function (tab) {
+                tab.classList.remove('active');
+            });
+            // Remove active class from all links
+            document.querySelectorAll('.tab-link').forEach(function (link) {
+                link.classList.remove('active');
+            });
+            // Show the selected tab
+            document.getElementById(tabId).classList.add('active');
+            // Set the clicked link as active
+            event.currentTarget.classList.add('active');
+        }
+        function showReportTab(event, tabId) {
+    // Hide all sub-tab contents
+    document.querySelectorAll('.report-tab-content').forEach(function (tab) {
+        tab.style.display = 'none';
+    });
+    // Remove active class from all sub-tabs
+    document.querySelectorAll('.reports-tab').forEach(function (tab) {
+        tab.classList.remove('active');
+    });
+    // Show the selected sub-tab content
+    document.getElementById(tabId).style.display = 'block';
+    // Set the clicked sub-tab as active
+    event.currentTarget.classList.add('active');
+}
+function filterSchedual() {
+    const filter = document.getElementById('schedualFilter').value;
+    const rows = document.querySelectorAll('.schedual-table-custom tbody tr');
+    
+    rows.forEach(row => {
+        if (filter === 'all' || row.classList.contains(`schedual-${filter}`)) {
+            row.style.display = '';
+        } else {
+            row.style.display = 'none';
+        }
+    });
+}
+    </script>
+   
+    <script>
+   window.onload = function() {
+    // Conflict Trends Chart
+    const ctx1 = document.getElementById('conflictTrendsChart').getContext('2d');
+    const conflictTrendsChart = new Chart(ctx1, {
+        type: 'bar',
+        data: {
+            labels: ['HR', 'Finance', 'Production', 'IT', 'Maintenance', 'Quality'],
+            datasets: [{
+                label: 'Conflicts',
+                data: [5, 3, 4, 6, 2, 5],
+                backgroundColor: ['#1e3a8a', '#fa607e', '#28a745', '#4786ff', '#ffcc00', '#8a2be2']
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+
+    // Department Performance Chart
+    const ctx2 = document.getElementById('departmentPerformanceChart').getContext('2d');
+    const departmentPerformanceChart = new Chart(ctx2, {
+        type: 'line',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May'],
+            datasets: [{
+                label: 'Resolved Conflicts',
+                data: [10, 15, 12, 8, 6],
+                borderColor: '#1e3a8a',
+                fill: false
+            }, {
+                label: 'Pending Conflicts',
+                data: [2, 3, 1, 4, 2],
+                borderColor: '#fa607e',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+};
+
+    
+      
+    </script>
+    
+
+</body>
+
+</html>

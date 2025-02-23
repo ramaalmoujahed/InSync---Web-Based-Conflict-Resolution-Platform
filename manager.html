@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Manager</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="manager.css">
+    <script src="reporterInfo.js"></script>
+   
+
+
+   
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Layla Soner</h2>
+        <div class="avatar-container">
+            <div class="avatar">
+                <img src="images\Layle Soner.jpg" alt="User Avatar" class="user-avatar-custom">
+                <span class="status active"></span>
+            </div>
+        </div>
+        <p style="margin-bottom: 15px;"></p>
+        <a href="#" onclick="showTab('dashboard')">Dashboard</a>
+        <a href="#" onclick="showTab('surveys')">Surveys</a>
+
+        <a href="#" onclick="showTab('conflict-reports')">Conflict Reports</a>
+        <a href="#" onclick="showTab('profile')">Profile</a>
+        <a href="#" onclick="showTab('settings')">Settings</a>
+        <hr>
+        <a href="#" onclick="showTab('contact')">Contact Us</a>
+        <hr>
+        <a href="logout.php">Logout</a>
+    </div>
+    <div class="main-content">
+        <div class="header">
+            <img src="images\logo.png" alt="Company Icon" class="company-icon">
+            <button class="notification-btn">🔔</button>
+        </div>
+       
+        <div class="tab-content active" id="dashboard">
+            <div class="dashboard">
+        <div class="dashboard-header">
+            <h1>Overview</h1>
+        </div>
+        <div class="metrics">
+                    <div class="metric" style="background: #4a596b;">
+                        <h2>Total Reports</h2>
+                        <p>18</p>
+                    </div>
+                    <div class="metric" style="background: #4a596b;">
+                        <h2>Pending Reports</h2>
+                        <p>7</p>
+                    </div>
+                    <div class="metric" style="background:#4a596b">
+                        <h2>Active Reports</h2>
+                        <p>10</p>
+                    </div>
+                    <div class="metric" style="background: #4a596b">
+                        <h2>Closed Reports</h2>
+                        <p>1</p>
+                    </div>
+                    <section class="dashboard-section">
+            <h2>Recent Activities</h2>
+            <div class="filter-bar">
+                <label for="filter-date">Filter by Date:</label>
+                <select id="filter-date" class="filter-dropdown" onchange="filterActivities()">
+                    <option value="all">All Dates</option>
+                    <option value="August 25th">yesterday</option>
+                    <option value="August 20th">3 days ago</option>
+                    <option value="August 18th">last week</option>
+                    <option value="August 15th">last month</option>
+                
+                   
+                </select>
+        
+                <label for="filter-activity">Filter by Activity:</label>
+                <select id="filter-activity" class="filter-dropdown" onchange="filterActivities()">
+                    <option value="all">All Activities</option>
+                    <option value="Report #123 updated by supervisor.">Surveys</option>
+                    <option value="Survey sent to all employees.">Reports</option>
+                    <option value="HR conflict report resolved by admin.">meetings</option>
+                    <option value="Performance review initiated.">documents</option>
+                  
+                    
+                </select>
+            </div>
+        
+           
+            <div class="dashboard-table-container">
+                
+                <table class="recent-activities-table">
+                    <thead>
+                        <tr>
+                            <th>Activities</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activities-tbody">
+                        <tr>
+                            <td>R007 updated by supervisor </td>
+                        </tr>
+                        <tr>
+                            <td>survey uploaded successfully</td>
+                        </tr>
+                        <tr>
+                            <td>EMP-8743 survey response</td>
+                        </tr>
+                        <tr>
+                            <td>R876 meeting in confrence room A4 </td>
+                        </tr>
+                       
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <!-- Key Metrics Section -->
+        <div class="chart-container">
+            <canvas id="performanceChart1"></canvas>
+            <button class="export-btn" onclick="showExportOptions()">
+                Export
+           </button>
+        </div>
+       
+        
+    </div>
+        
+<section class="dashboard-section">
+    <h2>Reports by Department</h2>
+    <div class="dashboard-chart-container">
+    <canvas id="reportsByDepartmentChart"></canvas>
+    <button class="export-btn" onclick="showExportOptions()">
+        Export
+   </button>
+    </div>
+</section>
+<section class="dashboard-section">
+    <h2>Additional Insights</h2>
+    <div class="dashboard-grid-container">
+        <div class="dashboard-chart-container">
+            <canvas id="trendAnalysisChart"></canvas>
+            <button class="export-btn" onclick="showExportOptions()">
+                 Export
+            </button>
+        </div>
+        <div class="dashboard-chart-container">
+            <canvas id="severityLevelsChart"></canvas>
+            <button class="export-btn" onclick="showExportOptions()">
+                Export
+            </button>
+        </div>
+        <div class="dashboard-chart-container">
+            <canvas id="reportsByStatusChart"></canvas>
+            <button class="export-btn" onclick="showExportOptions()">
+                Export
+            </button>
+        </div>
+    </div>
+</section>
+        <section class="dashboard-section performance-summary">
+            <h2>Performance Summary</h2>
+            <div class="dashboard-table-container">
+                <table class="performance-summary-table">
+                    <thead>
+                        <tr>
+                            <th>Rule</th>
+                            <th>EMP ID</th>
+                            <th>Performance</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Employee</td>
+                            <td>EMP-30101</td>
+                            <td>70%</td>
+                        </tr>
+                        <tr>
+                            <td>Employee</td>
+                            <td>EMP-30102</td>
+                            <td>60%</td>
+                        </tr>
+                        <tr>
+                            <td>Supervisor</td>
+                            <td>EMP-22345</td>
+                            <td>59%</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        
+        <!-- Top Report Sources Section -->
+        <section class="dashboard-section">
+            <h2>Top Report Sources</h2>
+            <div class="dashboard-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Source</th>
+                            <th>Number of Reports</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Production Department</td>
+                            <td>7</td>
+                        </tr>
+                        <tr>
+                            <td>Finance Department</td>
+                            <td>19</td>
+                        </tr>
+                        <!-- Add more rows as needed -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+       
+        <div id="exportModal" class="modal-export">
+            <div class="modal-content-export">
+                <span class="close-btn-custom" onclick="closeExportModal()">&times;</span>
+                <h3>Export Data</h3>
+                <button class="export-option-btn" onclick="exportToExcel()">
+                    <img src="images\Excel icon.png" alt="Excel Icon"> Export to Excel
+                </button>
+                <button class="export-option-btn" onclick="exportToGoogleSheets()">
+                    <img src="images\google icon.png" alt="Google Sheets Icon"> Export to Google Sheets
+                </button>
+            </div>
+        </div>
+       
+
+      
+           
+                </div>
+                
+        </div>
+        <div class="tab-content" id="surveys">
+            <h3 class="survey-title">Create and Upload Survey</h3>
+            <div class="survey-upload-container">
+                <form id="surveyUploadForm" class="survey-form">
+                    <!-- Survey Name -->
+                    <div class="form-group">
+                        <label for="survey-name">Survey Name:</label>
+                        <input type="text" id="survey-name" name="survey-name" placeholder="Enter the survey name" required>
+                    </div>
+        
+                    <!-- Survey Description -->
+                    <div class="form-group">
+                        <label for="survey-description">Description:</label>
+                        <textarea id="survey-description" name="survey-description" rows="3" placeholder="Enter a brief description of the survey" required></textarea>
+                    </div>
+        
+                    <!-- Target Audience -->
+                    <div class="form-group">
+                        <label for="survey-target">Target Audience:</label>
+                        <select id="survey-target" name="survey-target" required>
+                            <option value="" disabled selected>Select the target audience</option>
+                            <option value="employees">Employees</option>
+                            <option value="supervisors">Supervisors</option>
+                            <option value="managers">Managers</option>
+                            <option value="all">All</option>
+                        </select>
+                    </div>
+        
+                    <!-- File Upload -->
+                    <div class="form-group file-upload">
+                        <label for="survey-file">Upload Survey Document:</label>
+                        <input type="file" id="survey-file" name="survey-file" accept=".pdf,.doc,.docx,.xls,.xlsx">
+                        <div class="file-upload-info">Accepted formats: PDF, DOC, DOCX, XLS, XLSX</div>
+                    </div>
+        
+                    <!-- External Survey Links -->
+                    <div class="form-group">
+                        <label for="external-survey-link">Or Upload Survey from External Platform:</label>
+                        <input type="url" id="external-survey-link" name="external-survey-link" placeholder="Enter SurveyMonkey or Google Forms URL">
+                    </div>
+        
+                    <!-- Submit Button -->
+                    <div class="form-group">
+                        <button type="submit" class="survey-submit-btn">Upload Survey</button>
+                    </div>
+                </form>
+                <div id="uploadStatus" class="upload-status"></div>
+            </div>
+        </div>
+        
+        <div class="tab-content" id="conflict-reports">
+            <div class="tabs">
+                <div class="tab active" onclick="showSubTab('pending')">Pending</div>
+                <div class="tab" onclick="showSubTab('in-progress')">In Progress</div>
+                <div class="tab" onclick="showSubTab('closed')">Closed</div>
+            </div>
+    <!-- Pending Tab -->
+    <div class="sub-tab-content active" id="pending">
+        <h3>Pending Reports</h3>
+        <div class="table-container-custom">
+            <table class="custom-report-table">
+                <thead>
+                    <tr>
+                        <th>Reporter ID</th>
+                        <th>Reporter</th>
+                        <th>DEP involved</th>
+                        <th>Report ID</th>
+                        <th>Date Reported</th>
+                        <th>Conflict Type</th>
+                        <th>Priority Level</th>
+                        <th>Description</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1001')">E1001</a></td>
+                        <td>John Doe</td>
+                        <td>Finance, Marketing</td>
+                        <td>R001</td>
+                        <td>3.12.2023</td>
+                        <td>Quality Assurance Delays</td>
+                        <td>Low</td>
+                        <td>Quality Standard, Production Speed</td>
+                        <td>
+                            <button class="action-btn accept-btn">Accept</button>
+                            <button class="action-btn decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1002')">E1002</a></td>
+                        <td>Jane Smith</td>
+                        <td>Production, Procurement</td>
+                        <td>R002</td>
+                        <td>4.4.2024</td>
+                        <td>Project Dispute</td>
+                        <td>High</td>
+                        <td>Quality inspectors reject products not meeting standards, slowing down the line and frustrating Production, which is pressured to increase output.</td>
+                        <td>
+                            <button class="action-btn accept-btn">Accept</button>
+                            <button class="action-btn decline-btn">Decline</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1003')">E1003</a></td>
+                        <td>Jane Smith</td>
+                    <td>Design 
+                        Production</td>
+                    <td>R003</td>
+                    <td>4.12.2023</td>
+                    <td>Innovative Designs,Manufacturing Constraints</td>
+                    <td>High</td>
+                    <td> Design team develops complex product features that are hard to produce at scale, leading to tension over feasibility and cost.</td>
+                    <td>
+                        <button class="action-btn accept-btn">Accept</button>
+                        <button class="action-btn decline-btn">Decline</button>
+                    </td>
+               
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="showEmployeeDetails('E1004')">E1004</a></td>
+                    <td>Michael Brown</td>
+                    <td>Cost Management
+                        Production</td>
+                    <td>R004</td>
+                    <td>5.12.2023</td>
+                    <td>Cost-Saving Measures,Quality Expectations</td>
+                    <td>Medium</td>
+                    <td>Cost Management demands reductions in material costs or process expenses, but this affects the quality and consistency of the products.</td>
+                    <td>
+                        <button class="action-btn accept-btn">Accept</button>
+                        <button class="action-btn decline-btn">Decline</button>
+                    </td>
+               
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="showEmployeeDetails('E1005')">E1005</a></td>
+                    <td>Emily Clark</td>
+                    <td>Packaging 
+                         Production</td>
+                    <td>R005</td>
+                    <td>6.12.2023</td>
+                    <td>Packaging Delays,Production Output</td>
+                    <td>Low</td>
+                    <td> The Packaging team is delayed because Production outputs are inconsistent or below the expected volume.</td>
+                    <td>
+                        <button class="action-btn accept-btn">Accept</button>
+                        <button class="action-btn decline-btn">Decline</button>
+                    </td>
+                </tr>
+                <tr>
+                    <td><a href="#" onclick="showEmployeeDetails('E1006')">E1006</a></td>
+                    <td>Chris Evans</td>
+                    <td>Product Development
+                        Sales
+                    </td>
+                    <td>R006</td>
+                    <td>7.12.2023</td>
+                    <td>Resource Allocation ,New Product Priorities</td>
+                    <td>Medium</td>
+                    <td>Different views on project strategyNew Product Development requires cross-departmental resources, causing conflict over which projects should get priority.</td>
+                    <td>
+                        <button class="action-btn accept-btn">Accept</button>
+                        <button class="action-btn decline-btn">Decline</button>
+                    </td>
+                </tr>
+                </tbody>
+                </table>
+        </div>
+    </div>
+    
+    <!-- In Progress Reports Tab Content -->
+    <div class="sub-tab-content" id="in-progress">
+        <h3>In Progress Reports</h3>
+        <div class="table-container-custom">
+            <table class="custom-report-table">
+                <thead>
+                    <tr>
+                    <th>Reporter ID</th>
+                        <th>Reporter</th>
+                        <th>DEP involved</th>
+                        <th>Report ID</th>
+                        <th>Supervisor ID</th>
+                        <th>Date Reported</th>
+                        <th>Conflict Type</th>
+                        <th>Priority Level</th>
+                        <th>Description</th>
+                        <th>Progress Statue</th>
+                        <th> Progress %</th>
+                    
+                   
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1007')">E1007</a></td>
+                        <td>John Doe</td>
+                        <td>Finance
+                            Marketing
+                        </td>
+                        <td>R007</td>
+                        <td><a href="#" onclick="showEmployeeDetails('E1007')">E1007</a></td>
+
+                        <td>3.12.2023</td>
+                        <td>Budget Constrain</td>
+                        <td>Low</td>
+                        <td>Funding Limitations</td>
+                        
+                        <td>Schedual Meeting</td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1008')">E1008</a></td>
+                        <td>John Doe</td>
+                         <td>Sales
+                         Production
+                        </td>
+                        <td>R008</td>
+                        <td><a href="#" onclick="showEmployeeDetails('E1007')">E1007</a></td>
+
+                        <td>3.12.2023</td>
+                        <td>Deadline Misalignment</td>
+                        <td>Low</td>
+                        <td>ales commits to tight deadlines; Production struggles to meet them.</td>
+                        
+                        <td>Schedual Meeting</td>
+                        <td>40%</td>
+                    </tr>
+                    <tr>
+                        <td><a href="#" onclick="showEmployeeDetails('E1009')">E1009</a></td>
+                        <td>Michael Brown</td>
+                    <td>IT, Finance</td>
+                    <td>R009</td>
+                    <td><a href="#" onclick="showEmployeeDetails('E1007')">E1007</a></td>
+
+                    <td>5.12.2023</td>
+                    <td>Technology Disruptions</td>
+                    <td>Critical</td>
+                    <td> IT changes disrupt operations; departments resist new systems.</td>
+                    <td>Investigation Ongoing</td>
+                    <td>80%</td>
+                </tr>
+                </tbody>
+            </table>
+            
+        </div>
+        <section class="documents-received-section">
+            <h4>Documents Received from Supervisor</h4>
+    
+            <!-- Filter Options for Documents -->
+            <div class="filter-options">
+                <label for="document-type-filter">Filter by Document Type:</label>
+                <select id="document-type-filter" class="form-control" onchange="filterDocuments()">
+                    <option value="all">All</option>
+                    <option value="report">Report</option>
+                    <option value="memo">Memo</option>
+                    <option value="email">Email</option>
+                    <option value="meeting-notes">Meeting Notes</option>
+                </select>
+            </div>
+    
+            <!-- Documents Table -->
+            <div class="documents-table-container">
+                <table class="documents-table">
+                    <thead>
+                        <tr>
+                            <th>Document Type</th>
+                            <th>Document Name</th>
+                            <th>Date Received</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="documents-tbody">
+                        <tr>
+                            <td>Report</td>
+                            <td>Annual Financial Overview</td>
+                            <td>05.09.2023</td>
+                            <td><button class="action-btn" onclick="viewDocument('doc1')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Memo</td>
+                            <td>New Policy Updates</td>
+                            <td>10.09.2023</td>
+                            <td><button class="action-btn" onclick="viewDocument('doc2')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Email</td>
+                            <td>Meeting Confirmation</td>
+                            <td>12.09.2023</td>
+                            <td><button class="action-btn" onclick="viewDocument('doc3')">View</button></td>
+                        </tr>
+                        <tr>
+                            <td>Meeting Notes</td>
+                            <td>Project Kickoff Meeting</td>
+                            <td>15.09.2023</td>
+                            <td><button class="action-btn" onclick="viewDocument('doc4')">View</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        </div>
+<div class="sub-tab-content" id="closed">
+    <h3>Closed Reports</h3>
+    <div class="closed-reports-table">
+        <table class="custom-report-table">
+            <thead>
+                <tr>
+                    <th>Report ID</th>
+                    <th>Date Closed</th>
+                    <th>Result</th>
+                    <th>Outcome Details</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>R101</td>
+                    <td>01.12.2023</td>
+                    <td>Solved</td>
+                    <td>Closed</td>
+                </tr>
+            </tr>
+            <tr>
+            <td>R102</td>
+            <td>02.12.2023</td>
+            <td>Unsolved</td>
+            <td>Closed</td>
+        </tr>
+        <tr>
+            <td>R103</td>
+            <td>03.12.2023</td>
+            <td>Solved</td>
+            <td>Closed</td>
+        </tr> 
+        <tr>
+            <td>R104</td>
+            <td>04.12.2023</td>
+            <td>Escalated</td>
+            <td>Escalated to higher management.</td>
+        </tr>
+            </tbody>
+        </table>
+    </div>
+    <section class="report-management-section">
+        <h4>Manage Closed Reports</h4>
+        
+        <!-- Report Type Selection -->
+        <div class="form-group">
+            <label for="report-type">Select Report Type:</label>
+            <select id="report-type" class="form-control">
+                <option value="summary">Summary Report</option>
+                <option value="detailed">Detailed Report</option>
+                <option value="custom">Custom Report</option>
+            </select>
+        </div>
+    
+        <!-- Date Range Selection -->
+        <div class="form-group">
+            <label for="date-range">Select Date Range:</label>
+            <div class="date-range">
+                <input type="date" id="start-date" class="form-control" placeholder="Start Date">
+                <input type="date" id="end-date" class="form-control" placeholder="End Date">
+            </div>
+        </div>
+    
+        <!-- File Upload Option -->
+        <div class="form-group">
+            <label for="file-upload">Attach Additional Documents (Optional):</label>
+            <input type="file" id="file-upload" class="form-control" accept=".pdf, .doc, .docx, .xls, .xlsx">
+        </div>
+    
+        <!-- Comments Section -->
+        <div class="form-group">
+            <label for="comments">Additional Comments:</label>
+            <textarea id="comments" class="form-control" rows="3" placeholder="Enter any additional notes..."></textarea>
+        </div>
+    
+        <!-- Action Buttons -->
+        <div class="button-group">
+            <button class="action-btn" onclick="generateReport()">Generate Report</button>
+            <button class="action-btn" onclick="showUploadModal()">Upload to Higher Manager</button>
+        </div>
+    
+        <!-- Progress Bar -->
+        <div id="progress-bar" class="progress-bar" style="display: none;">
+            <div class="progress-bar-fill"></div>
+        </div>
+    </section>
+    
+    <!-- Confirmation Modal for Upload -->
+    <div id="uploadModal" class="modal-custom">
+        <div class="modal-content-custom">
+            <span class="close-btn-custom" onclick="closeUploadModal()">&times;</span>
+            <h3>Confirm Upload</h3>
+            <p>Are you sure you want to upload this report to a higher manager?</p>
+            <button class="action-btn" onclick="uploadToHigherManager()">Confirm Upload</button>
+            <button class="action-btn" onclick="closeUploadModal()">Cancel</button>
+        </div>
+    </div>
+    
+
+
+</div>
+    </div>
+    <div id="employeeModal" class="modal-custom">
+        <div class="modal-content-custom">
+            <span class="close-btn-custom" onclick="closeEmployeePopup()">&times;</span>
+            <h2 id="employeeModalTitle">Employee Details</h2>
+            <div id="employeeDetailsContainer">
+                <!-- Employee details will be dynamically injected here by JavaScript -->
+            </div>
+        </div>
+    </div>
+    
+    
+        <div class="tab-content" id="profile">
+        <h3 class="profile-title">Your Profile</h3>
+    <div class="profile-container">
+        <div class="profile-picture">
+            <img src="images\Layle Soner.jpg" alt="Profile Picture" class="profile-img">
+            <button class="profile-edit-btn">Change Photo</button>
+        </div>
+        <div class="profile-details">
+            <!-- Personal Information Section -->
+            <h4 class="profile-section-title">Personal Information</h4>
+            <div class="form-group profile-group">
+                <label for="profile-name">user name</label>
+                <input type="text" id="profile-name" placeholder="Enter your full name" value="layle_soner">
+            </div>
+            <div class="form-group profile-group">
+                <label for="profile-id">Employee ID</label>
+                <input type="text" id="profile-id" placeholder="Enter your employee ID" value="EMP-11345">
+            </div>
+            <div class="form-group profile-group">
+                <label for="profile-role">Role</label>
+                <input type="text" id="profile-role" placeholder="Enter your role" value="Manager">
+            </div>
+            <div class="form-group profile-group">
+                <label for="profile-phone">Phone Number</label>
+                <input type="tel" id="profile-phone" placeholder="Enter your phone number" value="+1 (555) 897-432">
+            </div>
+
+            <!-- Company Information Section -->
+            <h4 class="profile-section-title">Company Information</h4>
+            <div class="form-group profile-group">
+                <label for="company-domain">Company Domain</label>
+                <input type="text" id="company-domain" placeholder="Enter company domain" value="company.com">
+            </div>
+            <div class="form-group profile-group">
+                <label for="company-address">Company Address</label>
+                <input type="text" id="company-address" placeholder="Enter company address" value="1234 Elm Street, New York, NY">
+            </div>
+            <div class="form-group profile-group">
+                <label for="company-zip">Zip Code</label>
+                <input type="text" id="company-zip" placeholder="Enter company zip code" value="10001">
+            </div>
+            <div class="form-group profile-group">
+                <label for="company-url">Company Website URL</label>
+                <input type="url" id="company-url" placeholder="Enter company website URL" value="https://www.company.com">
+            </div>
+            <div class="form-group profile-group">
+                <label for="company-industry">Industry</label>
+                <input type="text" id="company-industry" placeholder="Enter company industry" value="Manufacturing">
+            </div>
+
+           
+        </div>
+    </div>
+           
+        </div>
+        <div class="tab-content" id="settings">
+        <div class="settings-container">
+        
+        <!-- Account Management Section -->
+        <h4 class="settings-section-title">Account Management</h4>
+        
+        <div class="form-group settings-group">
+            <label for="settings-email">Email Address</label>
+            <input type="email" id="settings-email" placeholder="Enter your email" value="layle.soner@company.com">
+        </div>
+        <div class="form-group settings-group">
+            <label for="settings-language">Preferred Language</label>
+            <select id="settings-language">
+                <option value="en">English</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+            </select>
+        </div>
+        <div class="form-group settings-group">
+            <button class="settings-save-btn">Update Account</button>
+        </div>
+
+        <!-- Security Settings Section -->
+        <h4 class="settings-section-title">Security Settings</h4>
+        <div class="form-group settings-group">
+            <label for="settings-password">Change Password</label>
+            <input type="password" id="settings-password" placeholder="Enter new password">
+        </div>
+        <div class="form-group settings-group">
+            <label for="settings-confirm-password">Confirm Password</label>
+            <input type="password" id="settings-confirm-password" placeholder="Confirm new password">
+        </div>
+        <div class="form-group settings-group">
+            <label for="settings-2fa">Two-Factor Authentication</label>
+            <select id="settings-2fa">
+                <option value="enabled">Enabled</option>
+                <option value="disabled">Disabled</option>
+            </select>
+        </div>
+        <div class="form-group settings-group">
+            <button class="settings-save-btn">Update Security</button>
+        </div>
+
+        <!-- Notification Preferences Section -->
+        <h4 class="settings-section-title">Notification Preferences</h4>
+        <div class="form-group settings-group">
+            <label for="settings-email-notifications">Email Notifications</label>
+            <select id="settings-email-notifications">
+                <option value="all">All Notifications</option>
+                <option value="important">Only Important</option>
+                <option value="none">None</option>
+            </select>
+        </div>
+        <div class="form-group settings-group">
+            <label for="settings-sms-notifications">SMS Notifications</label>
+            <select id="settings-sms-notifications">
+                <option value="all">All Notifications</option>
+                <option value="important">Only Important</option>
+                <option value="none">None</option>
+            </select>
+        </div>
+        <div class="form-group settings-group">
+            <button class="settings-save-btn">Update Notifications</button>
+        </div>
+
+        <!-- Data Export Section -->
+        
+    </div>
+           
+        </div>
+        <div class="tab-content" id="contact">
+        <div class="contact-us-container">
+        <div class="contact-us-card">
+            <h3>Contact Us</h3>
+            <div class="form-group">
+                <label for="contact-name">Name</label>
+                <input type="text" id="contact-name" placeholder="Write your name here..">
+            </div>
+            <div class="form-group">
+                <label for="contact-email">Email</label>
+                <input type="email" id="contact-email" placeholder="Let us know how to contact you back..">
+            </div>
+            <div class="form-group">
+                <label for="contact-message">Message</label>
+                <textarea id="contact-message" rows="4" placeholder="What would you like to tell us.."></textarea>
+            </div>
+            <div class="form-group">
+                <button type="submit">Send Message</button>
+            </div>
+            <div class="contact-details">
+                <span>Phone: 001 1023 567</span>
+                <span>Email: rama.insync@gmail.com</span>
+            </div>
+        </div>
+       
+        </div>
+        
+        <script>
+            function generateReport() {
+    const reportType = document.getElementById('report-type').value;
+    const startDate = document.getElementById('start-date').value;
+    const endDate = document.getElementById('end-date').value;
+    const comments = document.getElementById('comments').value;
+
+    // Show progress bar
+    document.getElementById('progress-bar').style.display = 'block';
+
+    // Placeholder for generating a report
+    setTimeout(() => {
+        alert(`Generating a ${reportType} report from ${startDate} to ${endDate}...`);
+        document.getElementById('progress-bar').style.display = 'none'; // Hide progress bar after completion
+    }, 2000); // Simulate report generation time
+}
+
+function showUploadModal() {
+    document.getElementById('uploadModal').style.display = 'block';
+}
+
+function closeUploadModal() {
+    document.getElementById('uploadModal').style.display = 'none';
+}
+
+function uploadToHigherManager() {
+    const fileUpload = document.getElementById('file-upload').files[0];
+    const comments = document.getElementById('comments').value;
+
+    // Show progress bar
+    document.getElementById('progress-bar').style.display = 'block';
+
+    // Placeholder for uploading report
+    setTimeout(() => {
+        alert('Report uploaded to higher manager successfully!');
+        document.getElementById('progress-bar').style.display = 'none'; // Hide progress bar after upload
+        closeUploadModal();
+    }, 2000); // Simulate upload time
+}
+
+            
+            function showExportOptions() {
+    document.getElementById('exportModal').style.display = 'block';
+}
+
+function closeExportModal() {
+    document.getElementById('exportModal').style.display = 'none';
+}
+
+function exportToExcel() {
+    // Placeholder function for exporting to Excel
+    alert('Data exported to Excel successfully!');
+    closeExportModal();
+}
+
+function exportToGoogleSheets() {
+    // Placeholder function for exporting to Google Sheets
+    alert('Data exported to Google Sheets successfully!');
+    closeExportModal();
+}
+
+         function showTab(tabId) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(function (tabContent) {
+        tabContent.classList.remove('active');
+        tabContent.style.display = 'none';  // Hide all tabs
+    });
+
+    // Remove 'active' class from all sidebar links
+    document.querySelectorAll('.sidebar a').forEach(function (tab) {
+        tab.classList.remove('active');
+    });
+
+    // Show the selected tab content
+    var tabContent = document.getElementById(tabId);
+    if (tabContent) {
+        tabContent.classList.add('active');
+        tabContent.style.display = 'block';  // Display the selected tab
+    } else {
+        console.error('Tab content not found for id:', tabId);
+    }
+
+    // Add 'active' class to the clicked tab link
+    document.querySelector('.sidebar a[onclick="showTab(\'' + tabId + '\')"]').classList.add('active');
+}
+
+        
+            function showSubTab(subTabId) {
+    // Hide all sub-tab contents
+    document.querySelectorAll('#conflict-reports .sub-tab-content').forEach(function (subTabContent) {
+        subTabContent.style.display = 'none';  // Hide all sub-tabs
+    });
+
+    // Remove 'active' class from all tabs
+    document.querySelectorAll('#conflict-reports .tab').forEach(function (tab) {
+        tab.classList.remove('active');  // Remove 'active' class from all tabs
+    });
+
+    // Show the selected sub-tab content
+    var subTabContent = document.getElementById(subTabId);
+    if (subTabContent) {
+        subTabContent.style.display = 'block';  // Display the selected sub-tab
+    } else {
+        console.error('Sub-tab content not found for id:', subTabId);
+    }
+
+    // Add 'active' class to the clicked tab
+    document.querySelector('#conflict-reports .tab[onclick="showSubTab(\'' + subTabId + '\')"]').classList.add('active');
+}
+
+        
+           
+        
+            document.addEventListener('DOMContentLoaded', function () {
+                // Performance Chart
+                const ctx1 = document.getElementById('performanceChart1').getContext('2d');
+                const performanceChart1 = new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
+                        datasets: [{
+                            label: 'Reports Metric',
+                            data: [0.2, 0.5, 0.7, 0.8, 1.1, 1.3, 1.5, 1.4, 1.3, 1.2, 1.1, 1.0],
+                            borderColor: 'rgba(75, 192, 192, 1)',
+                            backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Months'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Status'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        
+                // Reports by Department Chart
+                const ctx2 = document.getElementById('reportsByDepartmentChart').getContext('2d');
+                const reportsByDepartmentChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: ['IT', 'HR', 'Finance', 'Sales', 'Operations', 'Marketing'],
+                        datasets: [{
+                            label: 'Number of Reports',
+                            data: [45, 20, 30, 55, 25, 40],
+                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
+                            borderColor: 'rgba(54, 162, 235, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Department'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Number of Reports'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        
+                // Trend Analysis Over Time Chart
+                const ctx3 = document.getElementById('trendAnalysisChart').getContext('2d');
+                const trendAnalysisChart = new Chart(ctx3, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                        datasets: [{
+                            label: 'Reports Over Time',
+                            data: [10, 20, 30, 40, 35, 50],
+                            borderColor: 'rgba(255, 159, 64, 1)',
+                            backgroundColor: 'rgba(255, 159, 64, 0.2)',
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Number of Reports'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        
+                // Severity Levels Chart
+                const ctx4 = document.getElementById('severityLevelsChart').getContext('2d');
+                const severityLevelsChart = new Chart(ctx4, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Low', 'Medium', 'High', 'Critical'],
+                        datasets: [{
+                            label: 'Severity Distribution',
+                            data: [25, 40, 20, 15],
+                            backgroundColor: [
+                                'rgba(75, 192, 192, 0.6)',
+                                'rgba(255, 205, 86, 0.6)',
+                                'rgba(255, 99, 132, 0.6)',
+                                'rgba(201, 203, 207, 0.6)'
+                            ],
+                            borderColor: [
+                                'rgba(75, 192, 192, 1)',
+                                'rgba(255, 205, 86, 1)',
+                                'rgba(255, 99, 132, 1)',
+                                'rgba(201, 203, 207, 1)'
+                            ],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                            }
+                        }
+                    }
+                });
+        
+                // Reports by Status Chart
+                const ctx5 = document.getElementById('reportsByStatusChart').getContext('2d');
+                const reportsByStatusChart = new Chart(ctx5, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Open', 'In Progress', 'Resolved', 'Closed'],
+                        datasets: [{
+                            label: 'Number of Reports',
+                            data: [30, 40, 50, 20],
+                            backgroundColor: 'rgba(153, 102, 255, 0.6)',
+                            borderColor: 'rgba(153, 102, 255, 1)',
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Status'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Number of Reports'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+        
+                // Closed Reports Chart
+                const ctx6 = document.getElementById('closedReportsChart').getContext('2d');
+                const closedReportsChart = new Chart(ctx6, {
+                    type: 'line',
+                    data: {
+                        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug'],
+                        datasets: [{
+                            label: 'Resolved Reports',
+                            data: [3, 5, 2, 8, 4, 6, 7, 10],
+                            borderColor: '#1e3a8a',
+                            backgroundColor: 'rgba(30, 58, 138, 0.1)',
+                            fill: true,
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            x: {
+                                title: {
+                                    display: true,
+                                    text: 'Month'
+                                }
+                            },
+                            y: {
+                                title: {
+                                    display: true,
+                                    text: 'Number of Resolved Reports'
+                                },
+                                beginAtZero: true
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
+       <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Existing Chart.js setup...
+    
+            // Handle Survey Upload Form Submission
+            document.getElementById('surveyUploadForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent default form submission
+    
+                const surveyName = document.getElementById('survey-name').value;
+                const surveyDescription = document.getElementById('survey-description').value;
+                const surveyTarget = document.getElementById('survey-target').value;
+                const fileInput = document.getElementById('survey-file');
+                const externalLink = document.getElementById('external-survey-link').value;
+    
+                // Basic Validation
+                if (!surveyName || !surveyDescription || !surveyTarget) {
+                    alert('Please fill in all required fields.');
+                    return;
+                }
+    
+                if (fileInput.files.length === 0 && !externalLink) {
+                    alert('Please upload a file or provide an external link.');
+                    return;
+                }
+    
+                const formData = new FormData();
+                formData.append('survey-name', surveyName);
+                formData.append('survey-description', surveyDescription);
+                formData.append('survey-target', surveyTarget);
+    
+                if (fileInput.files.length > 0) {
+                    formData.append('survey-file', fileInput.files[0]);
+                } else if (externalLink) {
+                    formData.append('external-survey-link', externalLink);
+                }
+    
+                // Example: Handle file upload or link submission to a server
+                fetch('your-upload-endpoint-url', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById('uploadStatus').textContent = 'Survey uploaded successfully!';
+                })
+                .catch(error => {
+                    console.error('Error uploading survey:', error);
+                    document.getElementById('uploadStatus').textContent = 'Error uploading survey. Please try again.';
+                });
+            });
+        });
+    </script>
+        
+</body>
+</html>

@@ -1,0 +1,168 @@
+/* General Reset and Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* Full-Page Background Image with Blur Effect */
+body {
+    background: url('images/login.jpg') no-repeat center center/cover; /* Corrected File Path */
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+}
+
+/* Blurred Overlay for Readability */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Darker Overlay */
+    backdrop-filter: blur(10px); /* Increased Blur Effect */
+    z-index: 1;
+}
+
+/* Ensure Content Appears Above Background */
+.logo-container,
+.login-container {
+    position: relative;
+    z-index: 2;
+}
+
+/* Logo Section */
+.logo-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    width: 150px;
+    height: auto;
+}
+
+/* Login Container with Glassmorphism Effect */
+.login-container {
+    background: rgba(255, 255, 255, 0.2); /* Semi-Transparent White */
+    backdrop-filter: blur(15px); /* Glassmorphism Effect */
+    width: 100%;
+    max-width: 400px;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+/* Tab Navigation */
+.tab-nav {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 20px;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.tab-button {
+    background: none;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+.tab-button.active,
+.tab-button:hover {
+    color: #4ca1af;
+    border-bottom: 3px solid #4ca1af;
+}
+
+/* Form Styling */
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2 {
+    font-size: 22px;
+    color: white;
+    margin-bottom: 15px;
+}
+
+/* Input Fields */
+.input-group {
+    text-align: left;
+}
+
+.input-group label {
+    font-size: 14px;
+    color: white;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 5px;
+    font-size: 14px;
+    outline: none;
+    transition: border 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+.input-group input:focus {
+    border: 1px solid #4ca1af;
+    box-shadow: 0 0 5px rgba(76, 161, 175, 0.5);
+}
+
+/* Placeholder Text */
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Submit Buttons */
+.btn {
+    background: #4ca1af;
+    color: white;
+    padding: 12px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+}
+
+.btn:hover {
+    background: #3a8b9f;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .login-container {
+        max-width: 90%;
+    }
+
+    .tab-button {
+        font-size: 14px;
+        padding: 8px 15px;
+    }
+
+    h2 {
+        font-size: 20px;
+    }
+}
